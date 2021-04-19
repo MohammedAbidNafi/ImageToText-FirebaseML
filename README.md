@@ -3,7 +3,7 @@
 This Application extracts text from Images user inputs. This Application uses Firebase ML to extract images from text.
 
 ## Road Map
-1. Nice Ui
+1. Nice UI
 2. Ability to save the obtain file in .txt file.
 3. Ablity to obtain the saved files.
 4. Bug Fix And Imporved Perfomence.
@@ -13,7 +13,7 @@ This Application extracts text from Images user inputs. This Application uses Fi
 2. Suggest any feature or suggestion.(https://github.com/MohammedAbidNafi/ImageToText-FirebaseML/issues)
 3. Have a discussion in (https://github.com/MohammedAbidNafi/ImageToText-FirebaseML/discussions)
 
- To make changes to code
+### To make changes to code
 
 1. Fork it (https://github.com/MohammedAbidNafi/ImageToText-FirebaseML/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
