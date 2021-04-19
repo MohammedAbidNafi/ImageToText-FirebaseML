@@ -8,6 +8,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,15 +22,14 @@
             android:id="@+id/appCompatEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_displaytext"
             android:layout_marginHorizontal="10dp"
+            android:background="@drawable/edit_text_displaytext"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.943"
-            tools:ignore="LabelFor"
-            />
+            tools:ignore="LabelFor" />
 
     </RelativeLayout>
 
@@ -215,5 +215,21 @@
                 android:layout_marginBottom="5dp"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:background="@drawable/btn_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Done"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        app:layout_constraintVertical_bias="0.976" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
