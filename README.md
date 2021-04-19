@@ -8,7 +8,20 @@ This Application extracts text from Images user inputs. This Application uses Fi
 3. Ablity to obtain the saved files.
 4. Bug Fix And Imporved Perfomence.
 
-## Apache License 2.0
+## Ways to Contribute 
+1. Create an issue to discuss about your idea.(https://github.com/MohammedAbidNafi/ImageToText-FirebaseML/issues)
+2. Suggest any feature or suggestion.(https://github.com/MohammedAbidNafi/ImageToText-FirebaseML/issues)
+3. Have a discussion in (https://github.com/MohammedAbidNafi/ImageToText-FirebaseML/discussions)
+
+To make changes to code
+
+1. Fork it (https://github.com/MohammedAbidNafi/ImageToText-FirebaseML/fork)
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
+
+# Apache License 2.0
 
    Apache License
    
