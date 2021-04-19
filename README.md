@@ -2,6 +2,12 @@
 
 This Application extracts text from Images user inputs. This Application uses Firebase ML to extract images from text.
 
+# Road Map
+1. Nice Ui
+2. Ability to save the obtain file in .txt file.
+3. Ablity to obtain the saved files.
+4. Bug Fix And Imporved Perfomence.
+
 # Apache License 2.0
 
    Apache License
