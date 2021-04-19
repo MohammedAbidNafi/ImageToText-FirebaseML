@@ -12,8 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ImageToText">
         <activity android:name=".FinalText"></activity>
-        <activity android:name=".GalleryActivity" />
-        <activity android:name=".CameraActivity" />
+        <activity android:name=".GalleryActivity"
+            android:theme="@style/Theme.Main"/>
+        <activity android:name=".CameraActivity"
+            android:theme="@style/Theme.Main"/>
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.Splash">
@@ -23,7 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.Main"/>
     </application>
 
 </manifest>

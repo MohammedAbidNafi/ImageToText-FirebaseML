@@ -1,6 +1,7 @@
 package com.margsapp.imagetotext;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.cardview.widget.CardView;
 
@@ -22,6 +23,7 @@ public class FinalText extends AppCompatActivity {
     String text,txt;
     Intent intent;
 
+    AppCompatButton done;
     RelativeLayout editLayout,savetxtLayout,copyLayout,shareLayout,saveLayout;
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -35,7 +37,7 @@ public class FinalText extends AppCompatActivity {
         copyLayout = findViewById(R.id.copyview);
         shareLayout = findViewById(R.id.shareview);
         saveLayout = findViewById(R.id.saveview);
-
+        done = findViewById(R.id.done);
         copy = findViewById(R.id.copy);
         intent = getIntent();
         text = intent.getStringExtra("txt");
@@ -124,6 +126,12 @@ public class FinalText extends AppCompatActivity {
 
 
 
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FinalText.this,MainActivity.class));
+            }
+        });
 
         copy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,7 +187,7 @@ public class FinalText extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 txt = editText.getText().toString();
-                Toast.makeText(getApplicationContext(),"Save!!!!!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Feature not available yet.",Toast.LENGTH_SHORT).show();
             }
         });
 
