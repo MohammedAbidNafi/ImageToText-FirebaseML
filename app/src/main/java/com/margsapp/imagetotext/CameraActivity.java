@@ -1,22 +1,13 @@
 package com.margsapp.imagetotext;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -24,6 +15,13 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -64,7 +62,7 @@ public class CameraActivity extends AppCompatActivity {
         extract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
+
                 remove();
 
             }
@@ -162,6 +160,7 @@ public class CameraActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("QueryPermissionsNeeded")
     private void openCamera() {
         Intent takepictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
