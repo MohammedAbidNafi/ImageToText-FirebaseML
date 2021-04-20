@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ImageToText</string>
     <string name="app_by_margsapp">App by MargsApp</string>
+    <string name="github_link"><a href="https://github.com/MohammedAbidNafi/ImageToText-FirebaseML/" target="_blank">Github Link</a></string>
 </resources>
