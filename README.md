@@ -9,7 +9,7 @@ This Application extracts text from Images user inputs. This Application uses Fi
 4. Bug Fix And Imporved Perfomence.
 
 ## Ways to Contribute 
-1. Create an issue to discuss about your idea.(https://github.com/MohammedAbidNafi/ImageToText-FirebaseML/issues)
+1. Create an issue if you found any bug or any mistake.(https://github.com/MohammedAbidNafi/ImageToText-FirebaseML/issues)
 2. Suggest any feature or suggestion.(https://github.com/MohammedAbidNafi/ImageToText-FirebaseML/issues)
 3. Have a discussion in (https://github.com/MohammedAbidNafi/ImageToText-FirebaseML/discussions)
 
