@@ -13,4 +13,6 @@
     <color name="blacktext">#ffffff</color>
     <color name="cardback">#434343</color>
     <color name="blue">#0064CF</color>
+
+    <color name="greyedit">#323232</color>
 </resources>

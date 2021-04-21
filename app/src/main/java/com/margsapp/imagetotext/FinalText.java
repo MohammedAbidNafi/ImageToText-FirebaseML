@@ -169,6 +169,7 @@ public class FinalText extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 editText.setEnabled(true);
+
                 edit.setVisibility(View.GONE);
                 savetxt.setVisibility(View.VISIBLE);
             }
