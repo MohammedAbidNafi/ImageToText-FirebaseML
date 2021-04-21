@@ -10,14 +10,20 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 public class MainActivity extends AppCompatActivity {
 
     Dialog dialog;
 
     private AppCompatButton start;
+    Animation scaleup,scaledown;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +31,35 @@ public class MainActivity extends AppCompatActivity {
 
         dialog = new Dialog(MainActivity.this);
 
+        scaleup = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale_up);
+        scaledown = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale_down);
+
         start = findViewById(R.id.start);
+
+        start.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                if(event.getAction()==MotionEvent.ACTION_UP){
+                   start.startAnimation(scaledown);
+                }else if (event.getAction()== MotionEvent.ACTION_DOWN){
+                    start.startAnimation(scaleup);
+                }
+
+                return false;
+            }
+        });
 
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickStart();
+
+                new Handler().postDelayed(() -> {
+
+                    onClickStart();
+
+                }, 150);
+
             }
         });
 
@@ -47,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         camera = dialog.findViewById(R.id.camera);
 
         selectPicture = dialog.findViewById(R.id.picture);
+
 
         selectPicture.setOnClickListener(new View.OnClickListener() {
             @Override
