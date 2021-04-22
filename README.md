@@ -4,13 +4,13 @@ This Application extracts text from Images user inputs. This Application uses Fi
 
 ## Screenshots
 
-<img src="Screenshots/1.png" width="250" height="500"> <img src="Screenshots/2.png" width="250" height="500">
-<img src="Screenshots/3.png" width="250" height="500"> <img src="Screenshots/4.png" width="250" height="500">
-<img src="Screenshots/5.png" width="250" height="500"> <img src="Screenshots/6.png" width="250" height="500">
+<img src="Screenshots/1.png" width="235" height="500"> <img src="Screenshots/2.png" width="235" height="500">
+<img src="Screenshots/3.png" width="235" height="500"> <img src="Screenshots/4.png" width="235" height="500">
+<img src="Screenshots/5.png" width="235" height="500"> <img src="Screenshots/6.png" width="235" height="500">
 
 ## Road Map
-1. Nice UI
-2. Ability to save the obtain file in .txt file.
+1. Nice UI.
+2. Ability to save the obtain .txt file in files directory.
 3. Ablity to obtain the saved files.
 4. Bug Fix And Imporved Perfomence.
 
