@@ -23,8 +23,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-
-
             android:background="@drawable/edit_text_displaytext"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,6 +57,7 @@
              <ImageView
                  android:layout_width="50sp"
                  android:layout_height="50sp"
+                 android:id="@+id/noteicon"
                  android:layout_centerHorizontal="true"
                  android:layout_centerVertical="false"
                  android:layout_marginTop="10dp"
@@ -66,6 +65,8 @@
              <TextView
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
+                 android:id="@+id/edittxt"
+                 android:layout_below="@+id/noteicon"
                  android:text="Edit"
                  android:layout_alignParentBottom="true"
                  android:layout_centerHorizontal="true"
@@ -133,6 +134,7 @@
             <ImageView
                 android:layout_width="50sp"
                 android:layout_height="50sp"
+                android:id="@+id/copyicon"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="false"
                 android:layout_marginTop="10dp"
@@ -141,6 +143,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/copytxt"
+                android:layout_below="@+id/copyicon"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="5dp"
@@ -169,6 +173,7 @@
             <ImageView
                 android:layout_width="50sp"
                 android:layout_height="50sp"
+                android:id="@+id/shareicon"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="false"
                 android:layout_marginTop="10dp"
@@ -176,6 +181,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/sharetxt"
+                android:layout_below="@+id/shareicon"
                 android:text="Share"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
@@ -204,6 +211,7 @@
             <ImageView
                 android:layout_width="50sp"
                 android:layout_height="50sp"
+                android:id="@+id/saveicon"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="false"
                 android:layout_marginTop="10dp"
@@ -212,6 +220,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Save"
+                android:id="@+id/savetext"
+                android:layout_below="@+id/saveicon"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="5dp"/>
