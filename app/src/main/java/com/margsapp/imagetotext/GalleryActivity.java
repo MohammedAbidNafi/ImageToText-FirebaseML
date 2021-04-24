@@ -4,12 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+import androidx.core.util.Pair;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -32,7 +29,11 @@ import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 public class GalleryActivity extends AppCompatActivity {
 
@@ -42,26 +43,59 @@ public class GalleryActivity extends AppCompatActivity {
 
     TextView textView;
 
-    AppCompatButton extract;
+    AppCompatButton extract,gettext;
 
-    String txt;
+
     static final int GALLERY_PICK = 1;
     private Bitmap imageBitmap;
 
     Animation scaleup,scaledown;
+
+    private final ArrayList<String> textlist = new ArrayList<>();
+
+    private GraphicOverlay mGraphicOverlay;
+    private static final int RESULTS_TO_SHOW = 3;
+
+    private Integer mImageMaxWidth;
+
+    private Integer mImageMaxHeight;
+
+    private final PriorityQueue<Map.Entry<String, Float>> sortedLabels =
+            new PriorityQueue<>(
+                    RESULTS_TO_SHOW,
+                    new Comparator<Map.Entry<String, Float>>() {
+                        @Override
+                        public int compare(Map.Entry<String, Float> o1, Map.Entry<String, Float>
+                                o2) {
+                            return (o1.getValue()).compareTo(o2.getValue());
+                        }
+                    });
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
 
+        mGraphicOverlay = findViewById(R.id.graphic_overlay);
+        gettext = findViewById(R.id.gettext);
         imageView = findViewById(R.id.image);
         loader = findViewById(R.id.loader);
         textView = findViewById(R.id.textView);
         extract = findViewById(R.id.extract);
-        extract.setVisibility(View.VISIBLE);
+
+
         scaleup = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale_up);
         scaledown = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale_down);
+
+        gettext.setVisibility(View.VISIBLE);
+        gettext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                preloading();
+
+            }
+        });
 
 
         openGallery();
@@ -83,41 +117,58 @@ public class GalleryActivity extends AppCompatActivity {
         // extract.startAnimation(scaledown);
         new Handler().postDelayed(() -> {
 
+
             loader.setVisibility(View.VISIBLE);
             textView.setVisibility(View.VISIBLE);
             extract.setVisibility(View.GONE);
+            loading3();
+        }, 160);
+    }
+
+    private void preloading(){
+        gettext.setAnimation(scaleup);
+        new Handler().postDelayed(() -> {
+
+            gettext.setVisibility(View.GONE);
+            loader.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.VISIBLE);
             loading();
         }, 160);
     }
 
     private void loading() {
-        new Handler().postDelayed(() -> {
-
-            textView.setText("Deconstructing image");
-
-            loading2();
-        }, 1600);
+        textView.setText("Deconstructing image");
+        new Handler().postDelayed(this::loading2, 1600);
 
     }
 
     private void loading2() {
         new Handler().postDelayed(() -> {
-
             textView.setText("Analysing Image");
-
-            loading3();
+            loading2_1();
         }, 2600);
 
     }
 
-    private void loading3() {
+    private void loading2_1() {
 
         new Handler().postDelayed(() -> {
+            recognizeText();
+            textView.setText("Getting Text");
+            loader.setVisibility(View.GONE);
+            textView.setVisibility(View.GONE);
 
-            textView.setText("Extracting Text");
+            extract.setVisibility(View.VISIBLE);
 
-            loading4();
-        }, 3600);
+        }, 2600);
+
+    }
+
+
+
+    private void loading3() {
+        textView.setText("Extracting Text");
+        new Handler().postDelayed(this::loading4, 3600);
     }
 
     private void loading4() {
@@ -132,8 +183,7 @@ public class GalleryActivity extends AppCompatActivity {
 
     private void loading5() {
         new Handler().postDelayed(() -> {
-            InputImage image = InputImage.fromBitmap(imageBitmap, 0);
-            recognizeText(image);
+
             textView.setText("Done");
 
             newActivityLoader();
@@ -143,7 +193,7 @@ public class GalleryActivity extends AppCompatActivity {
     private void newActivityLoader() {
         new Handler().postDelayed(() -> {
 
-            startActivity(new Intent(GalleryActivity.this,FinalText.class).putExtra("txt",txt));
+            startActivity(new Intent(GalleryActivity.this,FinalText.class).putStringArrayListExtra("text",textlist));
         }, 1000);
     }
 
@@ -164,13 +214,32 @@ public class GalleryActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            imageView.setImageBitmap(imageBitmap);
+            Pair<Integer, Integer> targetedSize = getTargetedWidthHeight();
+
+            int targetWidth = targetedSize.first;
+            int maxHeight = targetedSize.second;
+
+            // Determine how much to scale down the image
+            float scaleFactor =
+                    Math.max(
+                            (float) imageBitmap.getWidth() / (float) targetWidth,
+                            (float) imageBitmap.getHeight() / (float) maxHeight);
+
+            Bitmap resizedBitmap =
+                    Bitmap.createScaledBitmap(
+                            imageBitmap,
+                            (int) (imageBitmap.getWidth() / scaleFactor),
+                            (int) (imageBitmap.getHeight() / scaleFactor),
+                            true);
+
+            imageView.setImageBitmap(resizedBitmap);
+            imageBitmap = resizedBitmap;
         }
     }
 
 
-    private void recognizeText(InputImage image) {
-
+    private void recognizeText() {
+        InputImage image = InputImage.fromBitmap(imageBitmap, 0);
         // [START get_detector_default]
         TextRecognizer recognizer = TextRecognition.getClient();
         // [END get_detector_default]
@@ -202,9 +271,58 @@ public class GalleryActivity extends AppCompatActivity {
             return;
         }
 
-        for (Text.TextBlock block : visionText.getTextBlocks()) {
-            txt = block.getText();
+        mGraphicOverlay.clear();
+        for (int i = 0; i < blocks.size(); i++) {
+            List<Text.Line> lines = blocks.get(i).getLines();
+            for (int j = 0; j < lines.size(); j++) {
+                List<Text.Element> elements = lines.get(j).getElements();
+                for (int k = 0; k < elements.size(); k++) {
+                    GraphicOverlay.Graphic textGraphic = new TextGraphic(mGraphicOverlay, elements.get(k));
+                    mGraphicOverlay.add(textGraphic);
 
+                }
+            }
         }
+
+        for(Text.TextBlock textBlock : visionText.getTextBlocks()){
+            textlist.add(textBlock.getText());
+        }
+
+
+    }
+
+    private Integer getImageMaxWidth() {
+        if (mImageMaxWidth == null) {
+            // Calculate the max width in portrait mode. This is done lazily since we need to
+            // wait for
+            // a UI layout pass to get the right values. So delay it to first time image
+            // rendering time.
+            mImageMaxWidth = imageView.getWidth();
+        }
+
+        return mImageMaxWidth;
+    }
+
+    private Integer getImageMaxHeight() {
+        if (mImageMaxHeight == null) {
+            // Calculate the max width in portrait mode. This is done lazily since we need to
+            // wait for
+            // a UI layout pass to get the right values. So delay it to first time image
+            // rendering time.
+            mImageMaxHeight =
+                    imageView.getHeight();
+        }
+
+        return mImageMaxHeight;
+    }
+
+    private Pair<Integer, Integer> getTargetedWidthHeight() {
+        int targetWidth;
+        int targetHeight;
+        int maxWidthForPortraitMode = getImageMaxWidth();
+        int maxHeightForPortraitMode = getImageMaxHeight();
+        targetWidth = maxWidthForPortraitMode;
+        targetHeight = maxHeightForPortraitMode;
+        return new Pair<>(targetWidth, targetHeight);
     }
 }

@@ -8,18 +8,30 @@
     android:background="@color/blue">
 
     <ImageView
-        android:id="@+id/image"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:scaleType="fitStart"
+        android:id="@+id/image"/>
+
+    <com.margsapp.imagetotext.GraphicOverlay
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        app:layout_constraintRight_toRightOf="@id/image"
+        app:layout_constraintLeft_toLeftOf="@id/image"
+        android:id="@+id/graphic_overlay"
+        android:layout_alignParentStart="true"
+        app:layout_constraintBottom_toBottomOf="@id/image"
+        app:layout_constraintTop_toTopOf="@id/image"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/extract"
         android:layout_width="250dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="28dp"
         android:background="@drawable/main_btn_back"
         android:text="Extract Text"
         android:textAllCaps="false"
@@ -28,10 +40,22 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image"
-        app:layout_constraintVertical_bias="0.709" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/gettext"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/main_btn_back"
+        android:text="Get Text"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ProgressBar
         android:id="@+id/loader"
@@ -43,7 +67,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image"
+
         app:layout_constraintVertical_bias="0.872" />
 
     <TextView

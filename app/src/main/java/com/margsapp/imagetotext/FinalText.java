@@ -11,17 +11,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 public class FinalText extends AppCompatActivity {
 
     CardView edit,savetxt;
     CardView copy,share,save;
     AppCompatEditText editText;
-    String text,txt;
+    String txt;
     Intent intent;
+
+    ArrayList<String> textList;
+
 
     AppCompatButton done;
     RelativeLayout editLayout,savetxtLayout,copyLayout,shareLayout,saveLayout;
@@ -40,7 +49,8 @@ public class FinalText extends AppCompatActivity {
         done = findViewById(R.id.done);
         copy = findViewById(R.id.copy);
         intent = getIntent();
-        text = intent.getStringExtra("txt");
+
+        textList = intent.getStringArrayListExtra("text");
         edit = findViewById(R.id.edit);
         share = findViewById(R.id.share);
         save = findViewById(R.id.save);
@@ -50,8 +60,11 @@ public class FinalText extends AppCompatActivity {
         editText = findViewById(R.id.appCompatEditText);
         editText.setEnabled(false);
 
-        editText.setText(text);
 
+        for (int i=0; i<textList.size();i++){
+            editText.append(textList.get(i));
+            editText.append("\n");
+        }
 
 
         edit.setOnTouchListener(new View.OnTouchListener() {
