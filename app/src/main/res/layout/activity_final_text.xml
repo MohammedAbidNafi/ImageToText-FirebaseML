@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,16 +7,12 @@
     tools:context=".FinalText">
 
 
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/copy"
-        app:layout_constraintVertical_bias="0.104">
+        android:layout_centerInParent="true">
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/appCompatEditText"
@@ -24,209 +20,206 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:background="@drawable/edit_text_displaytext"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.943"
             tools:ignore="LabelFor" />
 
     </RelativeLayout>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:cardCornerRadius="15sp"
-        android:id="@+id/edit"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            app:cardCornerRadius="15sp"
+            android:id="@+id/edit"
+            android:visibility="visible"
+            android:layout_marginEnd="15sp">
 
 
-         <RelativeLayout
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="@color/cardback"
-             android:id="@+id/editview"
-             >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cardback"
+                android:id="@+id/editview"
+                >
 
-             <ImageView
-                 android:layout_width="50sp"
-                 android:layout_height="50sp"
-                 android:id="@+id/noteicon"
-                 android:layout_centerHorizontal="true"
-                 android:layout_centerVertical="false"
-                 android:layout_marginTop="10dp"
-                 android:src="@drawable/ic_baseline_note_alt_24"/>
-             <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/edittxt"
-                 android:layout_below="@+id/noteicon"
-                 android:text="Edit"
-                 android:layout_alignParentBottom="true"
-                 android:layout_centerHorizontal="true"
-                 android:layout_marginBottom="5dp"/>
-         </RelativeLayout>
+                <ImageView
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:id="@+id/noteicon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="false"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_baseline_note_alt_24"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edittxt"
+                    android:layout_below="@+id/noteicon"
+                    android:text="Edit"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"/>
+            </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:cardCornerRadius="15sp"
-        android:id="@+id/savetxt"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082">
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            app:cardCornerRadius="15sp"
+            android:id="@+id/savetxt"
+
+            android:layout_marginEnd="15sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.06"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.082">
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/cardback"
-            android:id="@+id/savetxtview"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cardback"
+                android:id="@+id/savetxtview"
+                >
+
+                <ImageView
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="false"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_baseline_save_24"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save Text"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"/>
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/copy"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            app:cardCornerRadius="15sp"
+            android:layout_toStartOf="@+id/share"
+            android:layout_marginEnd="15sp"
+
             >
 
-            <ImageView
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="false"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_baseline_save_24"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Save Text"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="5dp"/>
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cardback"
+                android:id="@+id/copyview">
 
-    </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:id="@+id/copyicon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="false"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_baseline_content_copy_24" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/copy"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:cardCornerRadius="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.362"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/copytxt"
+                    android:layout_below="@+id/copyicon"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:text="Copy" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/cardback"
-            android:id="@+id/copyview">
+        <androidx.cardview.widget.CardView
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            app:cardCornerRadius="15sp"
+            android:id="@+id/share"
 
-            <ImageView
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:id="@+id/copyicon"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="false"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_baseline_content_copy_24" />
+            android:layout_toStartOf="@+id/save"
+            android:layout_marginEnd="15sp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cardback"
+                android:id="@+id/shareview"
+                >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/copytxt"
-                android:layout_below="@+id/copyicon"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="5dp"
-                android:text="Copy" />
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:id="@+id/shareicon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="false"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_baseline_ios_share_24"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sharetxt"
+                    android:layout_below="@+id/shareicon"
+                    android:text="Share"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:cardCornerRadius="15sp"
-        android:id="@+id/share"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.658"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.081">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/cardback"
-            android:id="@+id/shareview"
+        <androidx.cardview.widget.CardView
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            app:cardCornerRadius="15sp"
+            android:id="@+id/save"
+            android:layout_alignParentEnd="true"
+
+
             >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cardback"
+                android:id="@+id/saveview"
+                >
 
-            <ImageView
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:id="@+id/shareicon"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="false"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_baseline_ios_share_24"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/sharetxt"
-                android:layout_below="@+id/shareicon"
-                android:text="Share"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="5dp"/>
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:id="@+id/saveicon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="false"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_baseline_save_alt_24"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save"
+                    android:id="@+id/savetext"
+                    android:layout_below="@+id/saveicon"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:cardCornerRadius="15sp"
-        android:id="@+id/save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.081">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/cardback"
-            android:id="@+id/saveview"
-            >
 
-            <ImageView
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:id="@+id/saveicon"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="false"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_baseline_save_alt_24"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Save"
-                android:id="@+id/savetext"
-                android:layout_below="@+id/saveicon"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="5dp"/>
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
+
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -239,10 +232,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="Done"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="35dp"
         android:id="@+id/done"
         android:textSize="30sp"
         android:textColor="@color/white"
         android:textAllCaps="false"
         app:layout_constraintVertical_bias="0.976" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
