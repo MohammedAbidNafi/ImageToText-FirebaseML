@@ -214,4 +214,9 @@ public class FinalText extends AppCompatActivity {
 
         Toast.makeText(context,"Text has been copied to clipboard",Toast.LENGTH_SHORT).show();
     }
+
+    public void onBackPressed(){
+
+        startActivity(new Intent(FinalText.this,MainActivity.class));
+    }
 }
